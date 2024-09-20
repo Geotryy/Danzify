@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:quiz/components/button.dart';
 import 'package:quiz/screens/auth/login.dart';
-import 'package:quiz/screens/home.dart';
 
 class FirstScreen extends StatelessWidget {
   const FirstScreen({super.key});
@@ -18,24 +18,13 @@ class FirstScreen extends StatelessWidget {
                   image: AssetImage('lib/assets/images/initial.jpg'),
                   fit: BoxFit.cover),
             ),
-            child: Align(
+            child: const Align(
               alignment: Alignment(0.0, 0.4),
-              child: SizedBox(
-                width: 180,
-                child: ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => Login(),
-                      ),
-                    );
-                  },
-                  child: const Text(
-                    "Entrar",
-                    style: TextStyle(color: Colors.black, fontSize: 17),
-                  ),
-                ),
+              child: Button(
+                route: Login(),
+                color: Colors.white,
+                text: 'Entrar',
+                textButtonColor: Color(0xFFC11357),
               ),
             ),
           ),

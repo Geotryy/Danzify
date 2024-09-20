@@ -24,7 +24,6 @@ class _CustomTextFieldState extends State<CustomTextField> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     isObscure = widget.isSecret;
   }
@@ -35,7 +34,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
       padding: const EdgeInsets.all(8.0),
       child: TextFormField(
         inputFormatters: widget.inputFormatter,
-        obscureText: widget.isSecret, // Controle de senha secreta
+        obscureText: isObscure, // Use 'isObscure' em vez de 'widget.isSecret'
         decoration: InputDecoration(
           suffixIcon: widget.isSecret
               ? IconButton(
@@ -50,17 +49,16 @@ class _CustomTextFieldState extends State<CustomTextField> {
           prefixIcon: Icon(widget.icon),
           isDense: true,
           labelText: widget.label,
-          labelStyle: TextStyle(color: Colors.grey), // Cor do rótulo fora
-          hintStyle: TextStyle(color: Colors.blue), // Cor do texto dentro
+          labelStyle: TextStyle(color: Colors.grey),
+          hintStyle: TextStyle(color: Colors.blue),
           filled: true,
           fillColor: Color.fromARGB(255, 255, 250, 250),
-          
-         focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.transparent), // Remove a borda ao focar
+          focusedBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: Colors.transparent),
             borderRadius: BorderRadius.circular(20),
           ),
           enabledBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.transparent), // Remove a borda quando habilitado
+            borderSide: BorderSide(color: Colors.transparent),
             borderRadius: BorderRadius.circular(20),
           ),
         ),
