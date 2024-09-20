@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quiz/screens/auth/login.dart';
 import 'package:quiz/screens/home.dart';
 
 class FirstScreen extends StatelessWidget {
@@ -14,7 +15,7 @@ class FirstScreen extends StatelessWidget {
           child: Container(
             decoration: const BoxDecoration(
               image: DecorationImage(
-                  image: AssetImage('lib/assets/images/Dance.jpg'),
+                  image: AssetImage('lib/assets/images/initial.jpg'),
                   fit: BoxFit.cover),
             ),
             child: Align(
@@ -26,7 +27,7 @@ class FirstScreen extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => HomeScreen(),
+                        builder: (context) => Login(),
                       ),
                     );
                   },
