@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:quiz/components/button.dart';
 import 'package:quiz/components/customText.dart';
-import 'package:quiz/screens/home.dart';
+import 'package:quiz/screens/baseScreen.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({super.key});
@@ -30,13 +30,13 @@ class _SignUpState extends State<SignUp> {
           Align(
             alignment: Alignment.bottomCenter,
             child: Container(
-              height: MediaQuery.of(context).size.height * 0.5,
+              height: MediaQuery.of(context).size.height * 0.6,
               padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 40),
               decoration: const BoxDecoration(
                 borderRadius: BorderRadius.vertical(top: Radius.circular(45)),
                 color: Color.fromARGB(155, 14, 12, 12),
               ),
-              child: const SingleChildScrollView(
+              child:  const SingleChildScrollView(
                 // Adicione este widget para evitar overflow
                 child: Column(
                   mainAxisSize: MainAxisSize
@@ -44,25 +44,24 @@ class _SignUpState extends State<SignUp> {
                   children: [
                     CustomTextField(icon: Icons.person, label: 'Nome Completo'),
                     CustomTextField(icon: Icons.email, label: 'E-mail'),
-                    SizedBox(height: 16), // Espaçamento entre os campos
                     CustomTextField(
                       icon: Icons.lock,
                       label: 'Senha',
                       isSecret: true,
                     ),
                     CustomTextField(
-                        icon: Icons.lock, label: 'Confirme a senha'),
+                      icon: Icons.lock,
+                      label: 'Confirme a senha',
+                      isSecret: true,
+                    ),
                     SizedBox(
-                        height: 60), // Espaçamento abaixo do campo de senha
-                    SizedBox(
-                      width: 300,
-                      height: 50,
-                      child: Button(
-                        color: Color(0xFFC11357),
-                        text: 'Logar',
-                        textButtonColor: Colors.white,
-                        route: HomeScreen(),
-                      ),
+                        height: 50), // Espaçamento abaixo do campo de senha
+                    Button(
+                      width: 200,
+                      color: Color(0xFFC11357),
+                      text: 'Logar',
+                      textButtonColor: Colors.white,
+                      route: BaseScreen(),
                     ),
                   ],
                 ),

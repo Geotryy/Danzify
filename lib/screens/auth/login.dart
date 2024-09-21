@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:quiz/components/button.dart';
 import 'package:quiz/components/customText.dart';
-import 'package:quiz/screens/home.dart';
+import 'package:quiz/screens/auth/signup.dart';
+import 'package:quiz/screens/baseScreen.dart';
+
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -52,10 +54,11 @@ class _LoginState extends State<Login> {
                       width: 300,
                       height: 50,
                       child: Button(
+                        width: 200,
                         color: Color(0xFFC11357),
                         text: 'Logar',
                         textButtonColor: Colors.white,
-                        route: HomeScreen(),
+                        route: BaseScreen(),
                       ),
                     ),
                   ],

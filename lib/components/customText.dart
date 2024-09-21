@@ -48,17 +48,16 @@ class _CustomTextFieldState extends State<CustomTextField> {
               : null,
           prefixIcon: Icon(widget.icon),
           isDense: true,
-          labelText: widget.label,
-          labelStyle: TextStyle(color: Colors.grey),
-          hintStyle: TextStyle(color: Colors.blue),
+           hintText: widget.label, // Usando hintText em vez de labelText
+          hintStyle: const TextStyle(color: Colors.grey),
           filled: true,
-          fillColor: Color.fromARGB(255, 255, 250, 250),
+          fillColor: const Color.fromARGB(255, 255, 250, 250),
           focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.transparent),
+            borderSide: const BorderSide(color: Colors.transparent),
             borderRadius: BorderRadius.circular(20),
           ),
           enabledBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.transparent),
+            borderSide: const BorderSide(color: Colors.transparent),
             borderRadius: BorderRadius.circular(20),
           ),
         ),
