@@ -31,13 +31,13 @@ class _BaseScreenState extends State<BaseScreen> {
         ],
       ),
       bottomNavigationBar: Container(
-        decoration: const BoxDecoration(color: Colors.black),
+        decoration: const BoxDecoration(color: Color(0xFF121212)),
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
           child: GNav(
               selectedIndex: currentindex,
               gap: 8,
-              backgroundColor: Colors.black,
+              backgroundColor: Color(0xFF121212),
               color: Colors.white,
               activeColor: Colors.white,
               tabBackgroundColor: const Color.fromARGB(146, 255, 97, 194),
