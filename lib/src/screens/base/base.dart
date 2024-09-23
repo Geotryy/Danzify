@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:quiz/screens/home.dart';
+import 'package:quiz/src/screens/favorite.dart';
+import 'package:quiz/src/screens/home.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
+import 'package:quiz/src/screens/profile.dart';
+import 'package:quiz/src/screens/search.dart';
 
 class BaseScreen extends StatefulWidget {
   const BaseScreen({super.key});
@@ -17,14 +20,14 @@ class _BaseScreenState extends State<BaseScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: PageView(
+        
         controller: pageController,
-        children: [
-          const HomeScreen(),
-          Container(
-            color: Colors.blue,
-          ),
-          Container(color: Colors.blue),
-          Container(color: Colors.purple),
+        physics: const NeverScrollableScrollPhysics(),
+        children: const [
+          HomeScreen(),
+          FavoriteScreen(),
+          SearchScreen(),
+          ProfileScreen()
         ],
       ),
       bottomNavigationBar: Container(
@@ -37,7 +40,7 @@ class _BaseScreenState extends State<BaseScreen> {
               backgroundColor: Colors.black,
               color: Colors.white,
               activeColor: Colors.white,
-              tabBackgroundColor: Color.fromARGB(146, 255, 97, 194),
+              tabBackgroundColor: const Color.fromARGB(146, 255, 97, 194),
               padding: const EdgeInsets.all(16),
               onTabChange: (index) {
                 currentindex = index;

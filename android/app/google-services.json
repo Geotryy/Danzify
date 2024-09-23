@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "874348847334",
+    "project_id": "danzify",
+    "storage_bucket": "danzify.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:874348847334:android:d62e4abecbd0e3a6125b27",
+        "android_client_info": {
+          "package_name": "com.example.quiz"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDf_atnB9MmL2JwlxedaGiR26WHPZQ4dTw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

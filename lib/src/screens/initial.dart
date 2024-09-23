@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:quiz/components/button.dart';
-import 'package:quiz/screens/auth/login.dart';
-import 'package:quiz/screens/auth/signup.dart';
+import 'package:quiz/src/components/button.dart';
+import 'package:quiz/src/screens/auth/login.dart';
+import 'package:quiz/src/screens/auth/signup.dart';
 
 class FirstScreen extends StatelessWidget {
   const FirstScreen({super.key});

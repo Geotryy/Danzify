@@ -6,13 +6,15 @@ class CustomTextField extends StatefulWidget {
   final String label;
   final bool isSecret;
   final List<TextInputFormatter>? inputFormatter;
+  final TextEditingController controller; // Controller para gerenciar o texto
+
 
   const CustomTextField({
     super.key,
     required this.icon,
     required this.label,
     this.isSecret = false,
-    this.inputFormatter,
+    this.inputFormatter, required this.controller,
   });
 
   @override
@@ -33,6 +35,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: TextFormField(
+        controller: widget.controller,
         inputFormatters: widget.inputFormatter,
         obscureText: isObscure, // Use 'isObscure' em vez de 'widget.isSecret'
         decoration: InputDecoration(
