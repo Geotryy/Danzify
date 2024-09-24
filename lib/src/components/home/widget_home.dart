@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quiz/src/components/colors/colors.dart';
 
 Widget titleListView(context, String title) {
   return Padding(
@@ -24,7 +25,7 @@ Widget listCardHorizontal() {
               children: [
                 Expanded(
                   child: Container(
-                    color: Colors.blue,
+                    color: CustomColors.getColor(50),
                   ),
                 ),
                 const Padding(
