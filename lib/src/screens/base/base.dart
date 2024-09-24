@@ -20,27 +20,26 @@ class _BaseScreenState extends State<BaseScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: PageView(
-        
         controller: pageController,
         physics: const NeverScrollableScrollPhysics(),
         children: const [
           HomeScreen(),
-          FavoriteScreen(),
           SearchScreen(),
+          FavoriteScreen(),
           ProfileScreen()
         ],
       ),
       bottomNavigationBar: Container(
-        decoration: const BoxDecoration(color: Color(0xFF121212)),
+        decoration: const BoxDecoration(color: Color(0xFF0A0A0A)),
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
           child: GNav(
               selectedIndex: currentindex,
               gap: 8,
-              backgroundColor: Color(0xFF121212),
+              backgroundColor: Color(0xFF0A0A0A),
               color: Colors.white,
               activeColor: Colors.white,
-              tabBackgroundColor: const Color.fromARGB(146, 255, 97, 194),
+              tabBackgroundColor: Color(0xFFC11357),
               padding: const EdgeInsets.all(16),
               onTabChange: (index) {
                 currentindex = index;
@@ -52,12 +51,12 @@ class _BaseScreenState extends State<BaseScreen> {
                   text: 'Home',
                 ),
                 GButton(
-                  icon: Icons.favorite,
-                  text: 'Favoritos',
-                ),
-                GButton(
                   icon: Icons.search,
                   text: 'Pesquisar',
+                ),
+                GButton(
+                  icon: Icons.favorite,
+                  text: 'Favoritos',
                 ),
                 GButton(
                   icon: Icons.person,

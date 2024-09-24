@@ -5,19 +5,19 @@ Widget titleListView(context, String title) {
     padding: const EdgeInsets.all(8.0),
     child: Text(
       title,
-      style: TextStyle(color: Colors.black, fontSize: 20),
+      style: const TextStyle(color: Colors.white, fontSize: 20),
     ),
   );
 }
 
 Widget listCardHorizontal() {
-  return Container(
+  return SizedBox(
     height: 200,
     child: ListView.builder(
       scrollDirection: Axis.horizontal,
       itemCount: 10,
       itemBuilder: (context, index) {
-        return Container(
+        return SizedBox(
           width: 140,
           child: Card(
             child: Column(
@@ -27,8 +27,8 @@ Widget listCardHorizontal() {
                     color: Colors.blue,
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
+                const Padding(
+                  padding: EdgeInsets.all(8.0),
                   child: Text(
                     'Teste',
                     style: TextStyle(fontSize: 16),
