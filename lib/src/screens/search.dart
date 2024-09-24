@@ -69,15 +69,16 @@ class _SearchScreenState extends State<SearchScreen> {
                 ),
               ),
             ),
-            Align(
+            const Align(
               alignment: Alignment.topLeft,
               child: Padding(
                 padding:
-                    const EdgeInsets.symmetric(vertical: 20, horizontal: 5),
+                     EdgeInsets.symmetric(vertical: 20, horizontal: 5),
                 child: Text(
                   'Categorias',
                   style: TextStyle(
                     color: Colors.white,
+                    fontWeight: FontWeight.w600,
                     fontSize: 20,
                   ),
                 ),

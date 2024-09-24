@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 Widget verticalListCategories() {
   return SizedBox(
-    
     width: 415,
     child: ListView.builder(
         itemCount: 10,
@@ -14,13 +13,12 @@ Widget verticalListCategories() {
               Container(
                 width: 170,
                 height: 100,
-                child: Card(),
-                margin: EdgeInsets.only(right: 15),
+                margin: const EdgeInsets.only(right: 15),
+                child: const Card(),
               ),
               Container(
                 width: 170,
                 height: 100,
-               
                 child: Card(),
               )
             ],
