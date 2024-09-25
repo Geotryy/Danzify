@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:quiz/src/screens/favorite.dart';
 import 'package:quiz/src/screens/home.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
-import 'package:quiz/src/screens/profile.dart';
+import 'package:quiz/src/screens/profile/profile.dart';
 import 'package:quiz/src/screens/search.dart';
 
 class BaseScreen extends StatefulWidget {

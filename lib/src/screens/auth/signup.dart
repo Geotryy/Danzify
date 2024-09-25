@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:quiz/src/components/button.dart';
-import 'package:quiz/src/components/custom_text.dart';
+import 'package:quiz/src/components/auth/custom_text.dart';
 import 'package:quiz/src/screens/base/base.dart';
 
 class SignUp extends StatefulWidget {
