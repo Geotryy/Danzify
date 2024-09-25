@@ -1,21 +1,30 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:quiz/src/components/button.dart';
 import 'package:quiz/src/components/auth/custom_text.dart';
 import 'package:quiz/src/screens/base/base.dart';
-
+import 'package:quiz/src/services/auth_service.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
 
-
   @override
   State<Login> createState() => _LoginState();
 }
-final txtEmail = TextEditingController();
-final txtSenha = TextEditingController();
 
-bool isEntrando = true;
 class _LoginState extends State<Login> {
+  final AuthService _auth = AuthService();
+  final txtEmail = TextEditingController();
+  final txtSenha = TextEditingController();
+
+  @override
+  void dispose() {
+    txtEmail.dispose();
+    txtSenha.dispose();
+    // TODO: implement dispose
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,11 +50,17 @@ class _LoginState extends State<Login> {
                 borderRadius: BorderRadius.vertical(top: Radius.circular(45)),
                 color: Color.fromARGB(155, 14, 12, 12),
               ),
-              child: SingleChildScrollView( // Adicione este widget para evitar overflow
+              child: SingleChildScrollView(
+                // Adicione este widget para evitar overflow
                 child: Column(
-                  mainAxisSize: MainAxisSize.min, // Use MainAxisSize.min para que a coluna não ocupe todo o espaço
+                  mainAxisSize: MainAxisSize
+                      .min, // Use MainAxisSize.min para que a coluna não ocupe todo o espaço
                   children: [
-                    CustomTextField(icon: Icons.email, label: 'E-mail', controller: txtEmail,),
+                    CustomTextField(
+                      icon: Icons.email,
+                      label: 'E-mail',
+                      controller: txtEmail,
+                    ),
                     const SizedBox(height: 16), // Espaçamento entre os campos
                     CustomTextField(
                       icon: Icons.lock,
@@ -53,8 +68,9 @@ class _LoginState extends State<Login> {
                       isSecret: true,
                       controller: txtSenha,
                     ),
-                    const SizedBox(height: 60), // Espaçamento abaixo do campo de senha
                     const SizedBox(
+                        height: 60), // Espaçamento abaixo do campo de senha
+                    SizedBox(
                       width: 300,
                       height: 50,
                       child: Button(
@@ -62,7 +78,7 @@ class _LoginState extends State<Login> {
                         color: Color(0xFFC11357),
                         text: 'Logar',
                         textButtonColor: Colors.white,
-                        route: BaseScreen(),
+                        onPressed: _signIn,
                       ),
                     ),
                   ],
@@ -73,5 +89,18 @@ class _LoginState extends State<Login> {
         ],
       ),
     );
+  }
+
+  void _signIn() async {
+    String email = txtEmail.text;
+    String senha = txtSenha.text;
+
+    User? user = await _auth.signInWithEmailAndPassword(email, senha);
+
+    if (user != null) {
+      print("Usuário logado");
+      Navigator.push(
+          context, (MaterialPageRoute(builder: (context) => BaseScreen())));
+    }
   }
 }
