@@ -1,7 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:quiz/src/components/button.dart';
 import 'package:quiz/src/components/custom_text.dart';
 import 'package:quiz/src/screens/base/base.dart';
+import 'package:quiz/src/services/auth_service.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({super.key});
@@ -11,10 +13,19 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
+
+  final AuthService _auth = AuthService();
   final txtNome = TextEditingController();
   final txtEmail = TextEditingController();
   final txtSenha = TextEditingController();
   
+@override
+  void dispose() {
+  txtEmail.dispose();
+  txtSenha.dispose();
+    // TODO: implement dispose
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -55,20 +66,15 @@ class _SignUpState extends State<SignUp> {
                       isSecret: true,
                       controller: txtSenha,
                     ),
-                    CustomTextField(
-                      icon: Icons.lock,
-                      label: 'Confirme a senha',
-                      isSecret: true,
-                      controller: txtSenha,
-                    ),
+                   
                     const SizedBox(
                         height: 50), // Espaçamento abaixo do campo de senha
-                    const Button(
+                     Button(
                       width: 200,
                       color: Color(0xFFC11357),
-                      text: 'Logar',
+                      text: 'Cadastrar',
                       textButtonColor: Colors.white,
-                      route: BaseScreen(),
+                      onPressed: _signUp,
                     ),
                   ],
                 ),
@@ -79,4 +85,16 @@ class _SignUpState extends State<SignUp> {
       ),
     );
   }
+void _signUp() async {
+String name = txtNome.text;
+String email = txtEmail.text;
+String senha = txtSenha.text;
+
+User? user = await _auth.signUpWithEmailAndPassword(email, senha);
+
+if (user != null){
+  print("Usuário cadastrado");
+Navigator.push(context, (MaterialPageRoute(builder: (context) => BaseScreen())));
+}
+}
 }
