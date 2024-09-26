@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:quiz/src/components/button.dart';
-import 'package:quiz/src/components/custom_text.dart';
+import 'package:quiz/src/components/custom/button.dart';
+import 'package:quiz/src/components/auth/custom_text.dart';
 import 'package:quiz/src/screens/base/base.dart';
 import 'package:quiz/src/services/auth_service.dart';
 

@@ -28,7 +28,7 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
             ),
           )), //
    body: Container(
-    child: Row(
+    child: const Row(
       children: [],
     ),
    ), );

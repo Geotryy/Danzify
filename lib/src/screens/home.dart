@@ -7,9 +7,9 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFF0A0A0A), // Cor de fundo do Scaffold
+      backgroundColor: const Color(0xFF0A0A0A), // Cor de fundo do Scaffold
       appBar: AppBar(
-        backgroundColor: Color(0xFF0A0A0A), // Cor do AppBar
+        backgroundColor: const Color(0xFF0A0A0A), // Cor do AppBar
         elevation: 0.0, // Sem sombra
         automaticallyImplyLeading: false, // Remove a seta de voltar
         title: Image.asset(
@@ -19,7 +19,7 @@ class HomeScreen extends StatelessWidget {
         actions: [
           IconButton(
             onPressed: () {},
-            icon: Icon(Icons.circle),
+            icon: const Icon(Icons.circle),
           ),
         ],
         flexibleSpace: Container(
@@ -30,7 +30,7 @@ class HomeScreen extends StatelessWidget {
         ),
       ),
       body: Container(
-        padding: EdgeInsets.only(top: 15, left: 10),
+        padding: const EdgeInsets.only(top: 15, left: 10),
         child: ListView(
           children: [
             titleListView(context, 'Continue Assistindo'),
