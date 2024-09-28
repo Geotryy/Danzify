@@ -1,5 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/material.dart';
+
 
 class AuthService{
   FirebaseAuth _auth =  FirebaseAuth.instance;
@@ -25,6 +25,13 @@ print("Erro");
 }
 return null;
 }
+
+User? getCurrentUser(){
+return _auth.currentUser;
 }
+
+}
+
+
   
 

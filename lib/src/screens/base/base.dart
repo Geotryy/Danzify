@@ -22,7 +22,7 @@ class _BaseScreenState extends State<BaseScreen> {
       body: PageView(
         controller: pageController,
         physics: const NeverScrollableScrollPhysics(),
-        children: const [
+        children:  [
           HomeScreen(),
           SearchScreen(),
           FavoriteScreen(),
