@@ -8,6 +8,7 @@ class CustomTextField extends StatefulWidget {
   final List<TextInputFormatter>? inputFormatter;
   final TextEditingController controller; // Controller para gerenciar o texto
   final String? errorText;
+  final TextInputType keyboardType;
 
   const CustomTextField(
       {super.key,
@@ -16,6 +17,7 @@ class CustomTextField extends StatefulWidget {
       this.isSecret = false,
       this.inputFormatter,
       required this.controller,
+      this.keyboardType = TextInputType.text,
       this.errorText});
 
   @override
@@ -37,10 +39,11 @@ class _CustomTextFieldState extends State<CustomTextField> {
       padding: const EdgeInsets.all(8.0),
       child: TextFormField(
         controller: widget.controller,
+        keyboardType: widget.keyboardType,
         inputFormatters: widget.inputFormatter,
         obscureText: isObscure, // Use 'isObscure' em vez de 'widget.isSecret'
         decoration: InputDecoration(
-          errorText:  widget.errorText,
+          errorText: widget.errorText,
           suffixIcon: widget.isSecret
               ? IconButton(
                   onPressed: () {

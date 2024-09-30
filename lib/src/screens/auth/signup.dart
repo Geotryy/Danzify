@@ -1,9 +1,9 @@
+import 'dart:html';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:quiz/src/components/auth/custom_text.dart';
 import 'package:quiz/src/components/custom/button.dart';
-
-
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:quiz/src/screens/base/base.dart';
 import 'package:quiz/src/services/auth_service.dart';
 
@@ -19,16 +19,18 @@ class _SignUpState extends State<SignUp> {
   final txtNome = TextEditingController();
   final txtEmail = TextEditingController();
   final txtSenha = TextEditingController();
+  final txtNumber = TextEditingController();
+
+  String? senhaError;
 
   @override
   void dispose() {
     txtNome.dispose();
     txtEmail.dispose();
     txtSenha.dispose();
+    txtNumber.dispose();
     super.dispose();
   }
-
-  String? senhaError;
 
   @override
   Widget build(BuildContext context) {
@@ -56,19 +58,26 @@ class _SignUpState extends State<SignUp> {
                 color: Color.fromARGB(155, 14, 12, 12),
               ),
               child: SingleChildScrollView(
-                // Adicione este widget para evitar overflow
                 child: Column(
-                  mainAxisSize: MainAxisSize
-                      .min, // Use MainAxisSize.min para que a coluna não ocupe todo o espaço
+                  mainAxisSize: MainAxisSize.min,
                   children: [
                     CustomTextField(
-                        icon: Icons.person,
-                        label: 'Nome Completo',
-                        controller: txtNome),
+                      icon: Icons.person,
+                      label: 'Nome Completo',
+                      controller: txtNome,
+                    ),
                     CustomTextField(
-                        icon: Icons.email,
-                        label: 'E-mail',
-                        controller: txtEmail),
+                      icon: Icons.phone,
+                      label: 'Telefone',
+                      keyboardType: TextInputType.phone,
+                      controller: txtNumber,
+                    ),
+                    CustomTextField(
+                      icon: Icons.email,
+                      label: 'E-mail',
+                      keyboardType: TextInputType.emailAddress,
+                      controller: txtEmail,
+                    ),
                     CustomTextField(
                       icon: Icons.lock,
                       label: 'Senha',
@@ -76,14 +85,20 @@ class _SignUpState extends State<SignUp> {
                       controller: txtSenha,
                       errorText: senhaError,
                     ),
-                    const SizedBox(
-                        height: 50), // Espaçamento abaixo do campo de senha
+                    const SizedBox(height: 50),
                     Button(
                       width: 200,
                       color: Color(0xFFC11357),
                       text: 'Cadastrar',
                       textButtonColor: Colors.white,
                       onPressed: _signUp,
+                    ),
+                    Button(
+                      width: 200,
+                      color: Color(0xFFC11357),
+                      text: 'Testar Firestore',
+                      textButtonColor: Colors.white,
+                      onPressed: testFirestore, // Chame o método ao pressionar
                     ),
                   ],
                 ),
@@ -96,17 +111,19 @@ class _SignUpState extends State<SignUp> {
   }
 
   void _signUp() async {
-    String name = txtNome.text.trim(); // Remove espaços extras
+    String nome = txtNome.text.trim();
     String email = txtEmail.text.trim();
     String senha = txtSenha.text.trim();
+    String phone = txtNumber.text.trim();
 
-    if (name.isEmpty || email.isEmpty || senha.isEmpty) {
-      // Verificar se os campos estão vazios
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-        content: Text('Preencha todos os campos.'),
-        backgroundColor: Colors.red,
-      ));
-      return;
+    if (nome.isEmpty || email.isEmpty || senha.isEmpty || phone.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Preencha todos os campos.'),
+          backgroundColor: Colors.red,
+        ),
+      );
+      return; // Retorna aqui para evitar continuar se os campos estiverem vazios
     }
 
     setState(() {
@@ -117,28 +134,46 @@ class _SignUpState extends State<SignUp> {
       setState(() {
         senhaError = "A senha deve conter pelo menos 6 dígitos";
       });
+      return; // Retorna aqui para evitar continuar se a senha for inválida
     }
 
     try {
       User? user = await _auth.signUpWithEmailAndPassword(email, senha);
 
       if (user != null) {
-        await user.updateDisplayName(name); // Atualiza o nome de exibição
-        await user.reload(); // Recarrega o usuário para aplicar a mudança
-
-        User? updatedUser =
-            _auth.getCurrentUser(); // Obtém o usuário atualizado
-        print("Usuário cadastrado com nome: ${updatedUser?.displayName}");
-
+        await user.updateDisplayName(nome);
+        await FirebaseFirestore.instance
+            .collection('users')
+            .doc(user.uid)
+            .set({'phone': phone});
+        
         Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (context) => BaseScreen()));
+          context,
+          MaterialPageRoute(builder: (context) => BaseScreen()),
+        );
       }
     } catch (e) {
-      print("Erro ao cadastrar: $e");
-      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-        content: Text('Erro ao cadastrar. Tente novamente.'),
+      print("Erro ao cadastrar: ${e.toString()}");
+      String errorMessage = "Erro ao cadastrar. Tente novamente.";
+      if (e is FirebaseAuthException) {
+        errorMessage = e.message ?? errorMessage;
+      }
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text(errorMessage),
         backgroundColor: Colors.red,
       ));
+    }
+  }
+
+  void testFirestore() async {
+    try {
+      await FirebaseFirestore.instance
+          .collection('test')
+          .doc('testUser')
+          .set({'testField': 'testValue'});
+      print("Gravação bem-sucedida!");
+    } catch (e) {
+      print("Erro ao gravar no Firestore: ${e.toString()}");
     }
   }
 }
