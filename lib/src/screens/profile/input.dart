@@ -8,19 +8,19 @@ Widget dateProfile( {required String label, required String date}) {
     children: [
       Text(
         label,
-        style: TextStyle(
+        style: const TextStyle(
           color: Colors.white,
           fontSize: 17,
         ),
       ),
-      SizedBox(height: 8,),
+      const SizedBox(height: 8,),
     TextFormField(
       enabled: isEnabled,
       initialValue: date,
       decoration: InputDecoration(
         
          focusedBorder: OutlineInputBorder(
-            borderSide:  BorderSide(color: Colors.white, width: 0.2),
+            borderSide:  const BorderSide(color: Colors.white, width: 0.2),
             borderRadius: BorderRadius.circular(15),
           ),
           enabledBorder: OutlineInputBorder(
@@ -28,12 +28,12 @@ Widget dateProfile( {required String label, required String date}) {
             borderRadius: BorderRadius.circular(15),
           ),
            disabledBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.white, width: 0.2), // Borda quando inativo
+            borderSide: const BorderSide(color: Colors.white, width: 0.2), // Borda quando inativo
             borderRadius: BorderRadius.circular(15),
           ),
       ),
     ),
-        SizedBox(height: 25,)
+        const SizedBox(height: 25,)
     ],
   );
 }

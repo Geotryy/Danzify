@@ -41,48 +41,49 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyAWAmhx-7SiXPEyYrgnhHpZk5z2D9t_M78',
-    appId: '1:874348847334:web:c01cdea902ee8746125b27',
-    messagingSenderId: '874348847334',
-    projectId: 'danzify',
-    authDomain: 'danzify.firebaseapp.com',
-    storageBucket: 'danzify.appspot.com',
-    measurementId: 'G-6TG9HER892',
+    apiKey: 'AIzaSyBR6FhntryQv0MPFgxaEpoa_Gi_lhpQf58',
+    appId: '1:284502733106:web:2417a7eb53098270ad272b',
+    messagingSenderId: '284502733106',
+    projectId: 'danzify-2a2ec',
+    authDomain: 'danzify-2a2ec.firebaseapp.com',
+    storageBucket: 'danzify-2a2ec.appspot.com',
+    measurementId: 'G-PBX1NLKH5B',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyDf_atnB9MmL2JwlxedaGiR26WHPZQ4dTw',
-    appId: '1:874348847334:android:d62e4abecbd0e3a6125b27',
-    messagingSenderId: '874348847334',
-    projectId: 'danzify',
-    storageBucket: 'danzify.appspot.com',
+    apiKey: 'AIzaSyD-uhkQZ6ZyR8ElYqG0QJ_8G1yNi4ewjJ4',
+    appId: '1:284502733106:android:bfab9abd3860bc5bad272b',
+    messagingSenderId: '284502733106',
+    projectId: 'danzify-2a2ec',
+    storageBucket: 'danzify-2a2ec.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyCFLcRBfRc4R163T81GZp7NdoFDBMFRYOY',
-    appId: '1:874348847334:ios:2c67321a3055022a125b27',
-    messagingSenderId: '874348847334',
-    projectId: 'danzify',
-    storageBucket: 'danzify.appspot.com',
+    apiKey: 'AIzaSyDHZ-2sZrOatEhht4Cn_ua6MWe8oKYdlIQ',
+    appId: '1:284502733106:ios:6c876f08700c7e85ad272b',
+    messagingSenderId: '284502733106',
+    projectId: 'danzify-2a2ec',
+    storageBucket: 'danzify-2a2ec.appspot.com',
     iosBundleId: 'com.example.quiz',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyCFLcRBfRc4R163T81GZp7NdoFDBMFRYOY',
-    appId: '1:874348847334:ios:2c67321a3055022a125b27',
-    messagingSenderId: '874348847334',
-    projectId: 'danzify',
-    storageBucket: 'danzify.appspot.com',
+    apiKey: 'AIzaSyDHZ-2sZrOatEhht4Cn_ua6MWe8oKYdlIQ',
+    appId: '1:284502733106:ios:6c876f08700c7e85ad272b',
+    messagingSenderId: '284502733106',
+    projectId: 'danzify-2a2ec',
+    storageBucket: 'danzify-2a2ec.appspot.com',
     iosBundleId: 'com.example.quiz',
   );
 
   static const FirebaseOptions windows = FirebaseOptions(
-    apiKey: 'AIzaSyAWAmhx-7SiXPEyYrgnhHpZk5z2D9t_M78',
-    appId: '1:874348847334:web:110374a2afb79146125b27',
-    messagingSenderId: '874348847334',
-    projectId: 'danzify',
-    authDomain: 'danzify.firebaseapp.com',
-    storageBucket: 'danzify.appspot.com',
-    measurementId: 'G-5V6Z3CYPDV',
+    apiKey: 'AIzaSyBR6FhntryQv0MPFgxaEpoa_Gi_lhpQf58',
+    appId: '1:284502733106:web:0189272559edb0dcad272b',
+    messagingSenderId: '284502733106',
+    projectId: 'danzify-2a2ec',
+    authDomain: 'danzify-2a2ec.firebaseapp.com',
+    storageBucket: 'danzify-2a2ec.appspot.com',
+    measurementId: 'G-1Y3M6N8YF3',
   );
+
 }

@@ -4,7 +4,7 @@ import 'package:quiz/src/screens/profile/input.dart';
 import 'package:quiz/src/services/auth_service.dart';
 
 class ProfileScreen extends StatefulWidget {
-  ProfileScreen({super.key});
+  const ProfileScreen({super.key});
 
   @override
   State<ProfileScreen> createState() => _ProfileScreenState();
@@ -54,7 +54,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         ),
       ),
       body: Padding(
-        padding: EdgeInsets.all(15.0),
+        padding: const EdgeInsets.all(15.0),
         child: ListView(
           children: [
             const Center(
@@ -64,7 +64,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ),
             ),
             Padding(
-              padding: EdgeInsets.only(top: 15, bottom: 20),
+              padding: const EdgeInsets.only(top: 15, bottom: 20),
               child: Center(
                 child: Text(
                   // Exibe o nome do usuário, se disponível, ou um texto padrão

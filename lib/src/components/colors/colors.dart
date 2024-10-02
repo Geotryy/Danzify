@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-Map<int, Color> _colorSwatch = {
+const Map<int, Color> _colorSwatch = {
   50: Color(0xFFC11357),
   100: Color(0xFFFF6F8F), // Cor um pouco mais escura
   200: Color(0xFFFF3D6E), // Cor média
@@ -9,9 +9,9 @@ Map<int, Color> _colorSwatch = {
 };
 
 abstract class CustomColors {
-  static Color customContrastColor = Color(0xFF0A0A0A);
+  static Color customContrastColor = const Color(0xFF0A0A0A);
 
-  static MaterialColor customSwatchColor = MaterialColor(0xFFC11357, _colorSwatch);
+  static MaterialColor customSwatchColor = const MaterialColor(0xFFC11357, _colorSwatch);
 
   // Método para obter uma cor específica do swatch
   static Color getColor(int opacityLevel) {

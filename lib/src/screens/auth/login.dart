@@ -21,7 +21,6 @@ class _LoginState extends State<Login> {
   void dispose() {
     txtEmail.dispose();
     txtSenha.dispose();
-    // TODO: implement dispose
     super.dispose();
   }
 

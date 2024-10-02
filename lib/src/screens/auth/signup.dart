@@ -1,4 +1,3 @@
-import 'dart:html';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:quiz/src/components/auth/custom_text.dart';
@@ -88,14 +87,14 @@ class _SignUpState extends State<SignUp> {
                     const SizedBox(height: 50),
                     Button(
                       width: 200,
-                      color: Color(0xFFC11357),
+                      color: const Color(0xFFC11357),
                       text: 'Cadastrar',
                       textButtonColor: Colors.white,
                       onPressed: _signUp,
                     ),
                     Button(
                       width: 200,
-                      color: Color(0xFFC11357),
+                      color: const Color(0xFFC11357),
                       text: 'Testar Firestore',
                       textButtonColor: Colors.white,
                       onPressed: testFirestore, // Chame o método ao pressionar
@@ -142,14 +141,20 @@ class _SignUpState extends State<SignUp> {
 
       if (user != null) {
         await user.updateDisplayName(nome);
-        await FirebaseFirestore.instance
-            .collection('users')
-            .doc(user.uid)
-            .set({'phone': phone});
+       FirebaseFirestore.instance
+    .collection('usuarios')
+    .doc(user.uid)  // Definindo o UID como ID do documento
+    .set({
+      'Nome': txtNome.text,
+      'Email': txtEmail.text,
+      'Telefone': txtNumber.text,
+      'Senha': txtSenha.text
+    });
         
         Navigator.pushReplacement(
+          // ignore: use_build_context_synchronously
           context,
-          MaterialPageRoute(builder: (context) => BaseScreen()),
+          MaterialPageRoute(builder: (context) => const BaseScreen()),
         );
       }
     } catch (e) {
