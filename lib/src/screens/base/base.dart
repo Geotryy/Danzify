@@ -22,7 +22,7 @@ class _BaseScreenState extends State<BaseScreen> {
       body: PageView(
         controller: pageController,
         physics: const NeverScrollableScrollPhysics(),
-        children:  [
+        children:  const [
           HomeScreen(),
           SearchScreen(),
           FavoriteScreen(),
@@ -36,10 +36,10 @@ class _BaseScreenState extends State<BaseScreen> {
           child: GNav(
               selectedIndex: currentindex,
               gap: 8,
-              backgroundColor: Color(0xFF0A0A0A),
+              backgroundColor: const Color(0xFF0A0A0A),
               color: Colors.white,
               activeColor: Colors.white,
-              tabBackgroundColor: Color(0xFFC11357),
+              tabBackgroundColor: const Color(0xFFC11357),
               padding: const EdgeInsets.all(16),
               onTabChange: (index) {
                 currentindex = index;

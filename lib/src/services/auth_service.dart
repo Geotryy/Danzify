@@ -21,7 +21,7 @@ Future<User?> signInWithEmailAndPassword(String email, String password) async{
 return credential.user;
 }
 catch (e){
-print("Erro");
+print("Erro $e");
 }
 return null;
 }

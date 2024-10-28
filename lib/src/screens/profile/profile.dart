@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:quiz/src/screens/profile/input.dart';
 import 'package:quiz/src/services/auth_service.dart';
+import 'package:quiz/src/services/database_service.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -12,22 +13,34 @@ class ProfileScreen extends StatefulWidget {
 
 class _ProfileScreenState extends State<ProfileScreen> {
   // Acesso ao serviço de autenticação
-  AuthService auth = AuthService();
-  User? user;
 
-  @override
+String nome = '';
+String email = '';
+String telefone = '';
+
+@override
   void initState() {
+    // TODO: implement initState
     super.initState();
-    loadUserData();
+    _loadUserData;
   }
 
-  // Método para carregar os dados do usuário autenticado
-  void loadUserData() {
-    setState(() {
-      user = auth.getCurrentUser();
-    });
-  }
+  Future<void> _loadUserData() async{
+  String uid = FirebaseAuth.instance.currentUser!.uid;
+  Map<String, dynamic>? userData = await getUserData(uid);
 
+  // Atualiza o estado com os dados do usuário ou exibe uma mensagem de erro.
+  setState(() {
+    if (userData != null) {
+      nome = userData['nome'] ?? '';
+      telefone = userData['telefone']?.toString() ?? '';
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Erro ao carregar dados do usuário.')),
+      );
+    }
+  });
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -60,7 +73,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             const Center(
               child: CircleAvatar(
                 radius: 50,
-                backgroundImage: AssetImage('lib/assets/images/nenem.jpg'),
+                backgroundImage: AssetImage('lib/assets/images/'),
               ),
             ),
             Padding(
@@ -68,7 +81,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               child: Center(
                 child: Text(
                   // Exibe o nome do usuário, se disponível, ou um texto padrão
-                  user?.displayName ?? 'Nome não disponível',
+                 nome,
                   style: const TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
@@ -78,9 +91,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ),
             ),
             // Exibe o e-mail do usuário autenticado
-            dateProfile(label: 'E-mail', date: user?.email ?? 'E-mail não disponível'),
+            dateProfile(label: 'E-mail', date: email),
             // Exibe o telefone, se disponível. Você pode buscar isso do Firestore ou outro local
-            dateProfile(label: 'Telefone', date: '(21) 97648-2118'), // Altere para obter do Firebase se necessário
+            dateProfile(label: 'Telefone', date: telefone), // Altere para obter do Firebase se necessário
           ],
         ),
       ),

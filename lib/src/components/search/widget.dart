@@ -40,14 +40,14 @@ Widget horizontalListCategories() {
     child: ListView.builder(
         itemCount: categoryNames.length,
         itemBuilder: (context, index) {
-          return Container(
+          return SizedBox(
             height: 80,
             child: Card(
               color: CustomColors.getColor(50),
               child: Center(
                 child: Text(
                   categoryNames[index],
-                  style: TextStyle(fontSize: 20, color: Colors.white),
+                  style: const TextStyle(fontSize: 20, color: Colors.white),
                 ),
               ),
             ),

@@ -2,9 +2,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:quiz/src/components/auth/custom_text.dart';
 import 'package:quiz/src/components/custom/button.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:quiz/src/screens/base/base.dart';
 import 'package:quiz/src/services/auth_service.dart';
+import 'package:quiz/src/services/database_service.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({super.key});
@@ -92,13 +92,7 @@ class _SignUpState extends State<SignUp> {
                       textButtonColor: Colors.white,
                       onPressed: _signUp,
                     ),
-                    Button(
-                      width: 200,
-                      color: const Color(0xFFC11357),
-                      text: 'Testar Firestore',
-                      textButtonColor: Colors.white,
-                      onPressed: testFirestore, // Chame o método ao pressionar
-                    ),
+                    
                   ],
                 ),
               ),
@@ -140,17 +134,8 @@ class _SignUpState extends State<SignUp> {
       User? user = await _auth.signUpWithEmailAndPassword(email, senha);
 
       if (user != null) {
-        await user.updateDisplayName(nome);
-       FirebaseFirestore.instance
-    .collection('usuarios')
-    .doc(user.uid)  // Definindo o UID como ID do documento
-    .set({
-      'Nome': txtNome.text,
-      'Email': txtEmail.text,
-      'Telefone': txtNumber.text,
-      'Senha': txtSenha.text
-    });
-        
+        await signUpFirestore(nome, int.parse(phone), email);
+   
         Navigator.pushReplacement(
           // ignore: use_build_context_synchronously
           context,
@@ -170,15 +155,5 @@ class _SignUpState extends State<SignUp> {
     }
   }
 
-  void testFirestore() async {
-    try {
-      await FirebaseFirestore.instance
-          .collection('test')
-          .doc('testUser')
-          .set({'testField': 'testValue'});
-      print("Gravação bem-sucedida!");
-    } catch (e) {
-      print("Erro ao gravar no Firestore: ${e.toString()}");
-    }
-  }
+ 
 }
