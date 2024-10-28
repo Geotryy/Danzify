@@ -1,16 +1,31 @@
-# quiz
+<div align="left">
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dart/dart-original.svg" height="40" alt="dart logo"  />
+  <img width="12" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg" height="40" alt="flutter logo"  />
+  <img width="12" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" height="40" alt="cplusplus logo"  />
+</div>
 
-A new Flutter project.
+###
 
-## Getting Started
+<h1 align="center">WELCOME TO DANZIFY!</h1>
 
-This project is a starting point for a Flutter application.
+###
 
-A few resources to get you started if this is your first Flutter project:
+<div align="center">
+  <img height="200" src="https://i.ibb.co/7k2ftCN/Dance.jpg"  />
+</div>
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+###
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+<h2 align="left">Seu mais novo streaming de danças!</h2>
+
+###
+
+<p align="left">O Danzify é um aplicativo de streaming de danças. Um novo YouTube, porém, específicos para danças.<br><br>Foi desenvolvido utilizando o framework flutter.</p>
+
+###
+
+<p align="left">O Firebase/Firestore foi utilizado como banco de dados.</p>
+
+###
