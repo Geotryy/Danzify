@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:quiz/src/screens/favorite.dart';
-import 'package:quiz/src/screens/home.dart';
+import 'package:quiz/src/screens/favoriteScreen.dart';
+import 'package:quiz/src/screens/homeScreen.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
-import 'package:quiz/src/screens/profile/profile.dart';
+import 'package:quiz/src/screens/profile/profileScreen.dart';
 import 'package:quiz/src/screens/search.dart';
 
 class BaseScreen extends StatefulWidget {

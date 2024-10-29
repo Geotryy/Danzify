@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quiz/src/components/colors/colors.dart';
 
 import 'package:quiz/src/components/search/widget.dart';
 
@@ -15,9 +16,9 @@ class _SearchScreenState extends State<SearchScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF0A0A0A), // Cor de fundo do Scaffold
+      backgroundColor: CustomColors.customContrastColor, // Cor de fundo do Scaffold
       appBar: AppBar(
-        backgroundColor: const Color(0xFF0A0A0A), // Cor do AppBar
+        backgroundColor: CustomColors.customContrastColor, // Cor do AppBar
         elevation: 0.0, // Sem sombra
         automaticallyImplyLeading: false,
         title: const Padding(
@@ -32,9 +33,8 @@ class _SearchScreenState extends State<SearchScreen> {
           ),
         ),
         flexibleSpace: Container(
-          decoration: const BoxDecoration(
-            color: Color(
-                0xFF0A0A0A), // Cor sólida para garantir que o fundo não mude
+          decoration: BoxDecoration(
+            color: CustomColors.customContrastColor, // Cor sólida para garantir que o fundo não mude
           ),
         ),
       ),

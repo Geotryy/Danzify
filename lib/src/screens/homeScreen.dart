@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quiz/src/components/colors/colors.dart';
 import 'package:quiz/src/components/home/widget_home.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -7,9 +8,9 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF0A0A0A), // Cor de fundo do Scaffold
+      backgroundColor: CustomColors.customContrastColor, // Cor de fundo do Scaffold
       appBar: AppBar(
-        backgroundColor: const Color(0xFF0A0A0A), // Cor do AppBar
+        backgroundColor: CustomColors.customContrastColor, // Cor do AppBar
         elevation: 0.0, // Sem sombra
         automaticallyImplyLeading: false, // Remove a seta de voltar
         title: Image.asset(
@@ -23,9 +24,8 @@ class HomeScreen extends StatelessWidget {
           ),
         ],
         flexibleSpace: Container(
-          decoration: const BoxDecoration(
-            color: Color(
-                0xFF0A0A0A), // Cor sólida para garantir que o fundo não mude
+          decoration: BoxDecoration(
+            color: CustomColors.customContrastColor, // Cor sólida para garantir que o fundo não mude
           ),
         ),
       ),

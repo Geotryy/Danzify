@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:quiz/src/components/auth/custom_text.dart';
+import 'package:quiz/src/components/colors/colors.dart';
 import 'package:quiz/src/components/custom/button.dart';
 import 'package:quiz/src/screens/base/base.dart';
 import 'package:quiz/src/services/auth_service.dart';
@@ -45,9 +46,9 @@ class _LoginState extends State<Login> {
             child: Container(
               height: MediaQuery.of(context).size.height * 0.5,
               padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 40),
-              decoration: const BoxDecoration(
-                borderRadius: BorderRadius.vertical(top: Radius.circular(45)),
-                color: Color.fromARGB(155, 14, 12, 12),
+              decoration: BoxDecoration(
+                borderRadius: const BorderRadius.vertical(top: Radius.circular(45)),
+                color: CustomColors.customContrastColor,
               ),
               child: SingleChildScrollView(
                 // Adicione este widget para evitar overflow

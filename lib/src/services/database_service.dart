@@ -9,15 +9,17 @@ Future<void> signUpFirestore( String nome, int telefone, String email) async {
   });
 }
 
-Future<Map<String, dynamic>?> getUserData(String uid) async{
-  var docRef = FirebaseFirestore.instance.collection('Usuarios').doc(uid);
- var snapshot = await docRef.get();
 
-   // Verifica se o documento existe
-  if (snapshot.exists) {
-    return snapshot.data(); // Retorna os dados como um mapa
+Future<Map<String, dynamic>?> getUserData(String email) async {
+  var querySnapshot = await FirebaseFirestore.instance
+      .collection('Usuarios')
+      .where('email', isEqualTo: email,)
+      .get();
+
+  if (querySnapshot.docs.isNotEmpty) {
+    return querySnapshot.docs.first.data(); // Retorna o primeiro documento encontrado como mapa
   } else {
-    print("Documento não encontrado para o uid: $uid");
+    print("Documento não encontrado para o email: $email");
     return null;
   }
 }

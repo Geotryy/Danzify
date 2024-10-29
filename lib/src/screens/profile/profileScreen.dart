@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:quiz/src/screens/profile/input.dart';
-import 'package:quiz/src/services/auth_service.dart';
+import 'package:quiz/src/components/colors/colors.dart';
+import 'package:quiz/src/screens/profile/dataProfile.dart';
 import 'package:quiz/src/services/database_service.dart';
 
 class ProfileScreen extends StatefulWidget {
@@ -12,9 +12,7 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
-  // Acesso ao serviço de autenticação
-
-String nome = '';
+  String nome = '';
 String email = '';
 String telefone = '';
 
@@ -22,31 +20,39 @@ String telefone = '';
   void initState() {
     // TODO: implement initState
     super.initState();
-    _loadUserData;
+    _loadUserData();
   }
 
-  Future<void> _loadUserData() async{
-  String uid = FirebaseAuth.instance.currentUser!.uid;
-  Map<String, dynamic>? userData = await getUserData(uid);
-
-  // Atualiza o estado com os dados do usuário ou exibe uma mensagem de erro.
-  setState(() {
-    if (userData != null) {
-      nome = userData['nome'] ?? '';
-      telefone = userData['telefone']?.toString() ?? '';
-    } else {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Erro ao carregar dados do usuário.')),
-      );
+  Future<void> _loadUserData() async {
+  try {
+    // Obtem o email do usuário autenticado
+    String? email = FirebaseAuth.instance.currentUser?.email;
+    
+    if (email != null) {
+      // Obtém os dados do Firestore
+      Map<String, dynamic>? userData = await getUserData(email);
+      
+      setState(() {
+        if (userData != null) {
+          nome = userData['nome'] ?? '';
+          telefone = userData['telefone']?.toString() ?? 'nao foi';
+          this.email = userData['email'] ?? 'nao foi'; // Atualiza o email do estado
+        } else {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text('Erro ao carregar dados do usuário.')),
+          );
+        }
+      });
     }
-  });
+  } catch (e) {
+    print("Erro ao carregar dados: $e");
   }
+}
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: const Color(0xFF0A0A0A), // Cor de fundo do Scaffold
+    return Scaffold( backgroundColor: CustomColors.customContrastColor, // Cor de fundo do Scaffold
       appBar: AppBar(
-        backgroundColor: const Color(0xFF0A0A0A), // Cor do AppBar
+        backgroundColor: CustomColors.customContrastColor, // Cor do AppBar
         elevation: 0.0, // Sem sombra
         automaticallyImplyLeading: false,
         title: const Padding(
@@ -61,8 +67,8 @@ String telefone = '';
           ),
         ),
         flexibleSpace: Container(
-          decoration: const BoxDecoration(
-            color: Color(0xFF0A0A0A), // Cor sólida para garantir que o fundo não mude
+          decoration: BoxDecoration(
+            color: CustomColors.customContrastColor, // Cor sólida para garantir que o fundo não mude
           ),
         ),
       ),
@@ -73,7 +79,7 @@ String telefone = '';
             const Center(
               child: CircleAvatar(
                 radius: 50,
-                backgroundImage: AssetImage('lib/assets/images/'),
+                backgroundImage: AssetImage('lib/assets/images/profile.jfif'),
               ),
             ),
             Padding(
@@ -91,12 +97,11 @@ String telefone = '';
               ),
             ),
             // Exibe o e-mail do usuário autenticado
-            dateProfile(label: 'E-mail', date: email),
-            // Exibe o telefone, se disponível. Você pode buscar isso do Firestore ou outro local
-            dateProfile(label: 'Telefone', date: telefone), // Altere para obter do Firebase se necessário
+          Dataprofile(label: 'E-mail', data: email),
+          
+          Dataprofile(label: 'Telefone', data: telefone),
           ],
         ),
-      ),
-    );
+      ),);
   }
 }
