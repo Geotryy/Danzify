@@ -1,14 +1,14 @@
 [
   {
-    "name": "Balé",
-    "history": "O balé surgiu durante o Renascimento italiano no século XV e mais tarde se desenvolveu como uma forma de dança de concerto na França e na Rússia. É conhecido por sua graça, precisão e movimentos formalizados."
+    "nome": "Cisne negro",
+    "categoria": "Balett"
   },
   {
-    "name": "Hip-Hop",
+    "nome": "Hip-Hop",
     "history": "A dança hip-hop surgiu na década de 1970 na cidade de Nova York como parte da cultura hip-hop, que inclui música rap, arte de grafite e DJing. É caracterizada por seus estilos de dança de rua e movimentos improvisados."
   },
   {
-    "name": "Salsa",
+    "nome": "Salsa",
     "history": "A salsa surgiu no Caribe no início do século XX e combina elementos de música afro-cubana, jazz e outros estilos musicais latino-americanos. É uma dança de casal conhecida por seus movimentos ritmados e animados."
   }
 ]
