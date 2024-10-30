@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 
-class Dataprofile extends StatefulWidget {
+class DataProfile extends StatefulWidget {
   String label;
   String data;
-  Dataprofile({super.key, required this.label, required this.data});
+  DataProfile({super.key, required this.label, required this.data});
 
   @override
-  State<Dataprofile> createState() => _DataprofileState();
+  State<DataProfile> createState() => _DataprofileState();
 }
 
-class _DataprofileState extends State<Dataprofile> {
+class _DataprofileState extends State<DataProfile> {
   @override
   Widget build(BuildContext context) {
     return Column(

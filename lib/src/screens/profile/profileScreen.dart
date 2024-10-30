@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:quiz/src/components/colors/colors.dart';
-import 'package:quiz/src/screens/profile/dataProfile.dart';
+import 'package:quiz/src/screens/profile/components/dataProfile.dart';
 import 'package:quiz/src/services/database_service.dart';
 
 class ProfileScreen extends StatefulWidget {
@@ -97,9 +97,9 @@ String telefone = '';
               ),
             ),
             // Exibe o e-mail do usuário autenticado
-          Dataprofile(label: 'E-mail', data: email),
+          DataProfile(label: 'E-mail', data: email),
           
-          Dataprofile(label: 'Telefone', data: telefone),
+          DataProfile(label: 'Telefone', data: telefone),
           ],
         ),
       ),);
