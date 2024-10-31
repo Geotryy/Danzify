@@ -5,10 +5,15 @@ import 'package:quiz/src/components/custom/button.dart';
 import 'package:quiz/src/screens/base/base.dart';
 import 'package:quiz/src/services/auth_service.dart';
 import 'package:quiz/src/services/database_service.dart';
+import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
+
 
 class SignUp extends StatefulWidget {
-  const SignUp({super.key});
-
+  SignUp({super.key});
+final phoneformater = MaskTextInputFormatter(
+  mask: "(##) #####-####",
+  filter: {"#" : RegExp(r'[0-9]') },
+ );
   @override
   State<SignUp> createState() => _SignUpState();
 }
@@ -66,6 +71,7 @@ class _SignUpState extends State<SignUp> {
                       controller: txtNome,
                     ),
                     CustomTextField(
+                      inputFormatter: [widget.phoneformater],
                       icon: Icons.phone,
                       label: 'Telefone',
                       keyboardType: TextInputType.phone,
@@ -85,7 +91,10 @@ class _SignUpState extends State<SignUp> {
                       errorText: senhaError,
                     ),
                     const SizedBox(height: 50),
-                    Button(
+                    CustomButton(
+                      navigator: (context) {
+                        Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => BaseScreen()), (route) => false);
+                      },
                       width: 200,
                       color: const Color(0xFFC11357),
                       text: 'Cadastrar',
@@ -134,7 +143,7 @@ class _SignUpState extends State<SignUp> {
       User? user = await _auth.signUpWithEmailAndPassword(email, senha);
 
       if (user != null) {
-        await signUpFirestore(nome, int.parse(phone), email);
+        await signUpFirestore(nome, phone, email);
    
         Navigator.pushReplacement(
           // ignore: use_build_context_synchronously

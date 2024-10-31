@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:quiz/src/components/colors/colors.dart';
-import 'package:quiz/src/screens/profile/components/dataProfile.dart';
+import 'package:quiz/src/screens/profile/components/data_profile.dart';
 import 'package:quiz/src/services/database_service.dart';
 
 class ProfileScreen extends StatefulWidget {

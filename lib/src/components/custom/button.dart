@@ -1,20 +1,19 @@
 import 'package:flutter/material.dart';
 
-class Button extends StatelessWidget {
+class CustomButton extends StatelessWidget {
   final Color color;
   final String text;
   final Color textButtonColor;
-  final Widget? route; // Agora o route é opcional
   final double width;
   final VoidCallback? onPressed; // O onPressed também é opcional
-
-  const Button({
+  final void Function (BuildContext)? navigator;
+  const CustomButton({
     super.key,
     required this.color,
     required this.text,
     required this.textButtonColor,
-    this.route, // Não obrigatório
     required this.width,
+    required this.navigator,
     this.onPressed, // Não obrigatório
   });
 
@@ -24,11 +23,9 @@ class Button extends StatelessWidget {
       onTap: () {
         if (onPressed != null) {
           onPressed!();
-        } else if (route != null) {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => route!), // Verifica se route foi passado
-          );
+        } else if (navigator != null) {
+                    navigator!(context); // Chama a função de navegação
+
         }
       },
       child: Container(

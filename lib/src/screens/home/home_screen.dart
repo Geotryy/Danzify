@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:quiz/src/components/colors/colors.dart';
-import 'package:quiz/src/components/home/widget_home.dart';
+import 'package:quiz/src/screens/home/components/widget_home.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -13,16 +13,16 @@ class HomeScreen extends StatelessWidget {
         backgroundColor: CustomColors.customContrastColor, // Cor do AppBar
         elevation: 0.0, // Sem sombra
         automaticallyImplyLeading: false, // Remove a seta de voltar
-        title: Image.asset(
-          'lib/assets/images/danzify.png', height: 80, // Altura da imagem
-          fit: BoxFit.contain,
-        ), // Ajuste dentro do AppBar),
-        actions: [
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(Icons.circle),
+        title: SafeArea(
+          child: Center(
+            child: Image.asset(
+              'lib/assets/images/danzify.png', height: 120, // Altura da imagem
+              fit: BoxFit.contain,
+            ),
           ),
-        ],
+        ), // Ajuste dentro do AppBar),
+       
+        
         flexibleSpace: Container(
           decoration: BoxDecoration(
             color: CustomColors.customContrastColor, // Cor sólida para garantir que o fundo não mude

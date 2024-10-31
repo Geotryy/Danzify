@@ -1,9 +1,11 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:quiz/src/screens/favoriteScreen.dart';
-import 'package:quiz/src/screens/homeScreen.dart';
+import 'package:quiz/src/screens/favorite/favorite_screen.dart';
+import 'package:quiz/src/screens/home/home_screen.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
-import 'package:quiz/src/screens/profile/profileScreen.dart';
-import 'package:quiz/src/screens/search.dart';
+import 'package:quiz/src/screens/profile/principal_profile.dart';
+import 'package:quiz/src/screens/profile/options/profile_screen.dart';
+import 'package:quiz/src/screens/search/search.dart';
 
 class BaseScreen extends StatefulWidget {
   const BaseScreen({super.key});
@@ -26,7 +28,7 @@ class _BaseScreenState extends State<BaseScreen> {
           HomeScreen(),
           SearchScreen(),
           FavoriteScreen(),
-          ProfileScreen()
+          PrincipalProfile()
         ],
       ),
       bottomNavigationBar: Container(
@@ -47,19 +49,19 @@ class _BaseScreenState extends State<BaseScreen> {
               },
               tabs: const [
                 GButton(
-                  icon: Icons.home,
+                  icon: CupertinoIcons.house_fill,
                   text: 'Home',
                 ),
                 GButton(
-                  icon: Icons.search,
+                  icon: CupertinoIcons.search,
                   text: 'Pesquisar',
                 ),
                 GButton(
-                  icon: Icons.favorite,
+                  icon: CupertinoIcons.heart_fill,
                   text: 'Favoritos',
                 ),
                 GButton(
-                  icon: Icons.person,
+                  icon: CupertinoIcons.person_fill,
                   text: 'Perfil',
                 )
               ]),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:quiz/src/components/colors/colors.dart';
 
-import 'package:quiz/src/components/search/widget.dart';
+import 'package:quiz/src/screens/search/components/widget.dart';
 
 class SearchScreen extends StatefulWidget {
   const SearchScreen({super.key});
@@ -28,6 +28,7 @@ class _SearchScreenState extends State<SearchScreen> {
             style: TextStyle(
               color: Colors.white,
               fontWeight: FontWeight.w600,
+              fontFamily: 'Nexa',
               fontSize: 30,
             ),
           ),
@@ -50,7 +51,9 @@ class _SearchScreenState extends State<SearchScreen> {
                   decoration: InputDecoration(
                     filled: true,
                     hintText: 'Procure suas danças favoritas...',
+                  
                     hintStyle: const TextStyle(
+                      fontFamily: 'Nexa',
                         color: Color.fromARGB(255, 165, 165, 165)),
                     fillColor: const Color(0xFF211f24), // Cor de fundo
                     border: OutlineInputBorder(
@@ -80,6 +83,7 @@ class _SearchScreenState extends State<SearchScreen> {
                   child: Text(
                     'Categorias',
                     style: TextStyle(
+                      fontFamily: 'Nexa',
                       color: Colors.white,
                       fontWeight: FontWeight.w600,
                       fontSize: 20,

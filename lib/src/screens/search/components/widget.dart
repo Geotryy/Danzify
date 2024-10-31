@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:quiz/src/components/colors/colors.dart';
-import 'package:quiz/src/components/search/map_categ.dart';
+import 'package:quiz/src/screens/search/components/map_categ.dart';
 
 Widget verticalListCategories() {
   List<String> categoryNames = categories.keys.toList();
@@ -23,7 +23,7 @@ Widget verticalListCategories() {
         child: Center(
           child: Text(
             categoryNames[index],
-            style: const TextStyle(color: Colors.white, fontSize: 16),
+            style: const TextStyle(color: Colors.white, fontSize: 16, fontFamily: 'Nexa', fontWeight: FontWeight.w600),
             textAlign: TextAlign.center,
           ),
         ),
@@ -47,7 +47,7 @@ Widget horizontalListCategories() {
               child: Center(
                 child: Text(
                   categoryNames[index],
-                  style: const TextStyle(fontSize: 20, color: Colors.white),
+                  style: const TextStyle(fontSize: 20, color: Colors.white, fontFamily: 'Nexa'),
                 ),
               ),
             ),

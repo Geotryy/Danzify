@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-Future<void> signUpFirestore( String nome, int telefone, String email) async {
+Future<void> signUpFirestore( String nome, String telefone, String email) async {
   var collection = FirebaseFirestore.instance.collection('Usuarios');
   await collection.add({
     'nome': nome,

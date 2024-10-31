@@ -24,6 +24,7 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
               style: TextStyle(
                 color: Colors.white,
                 fontWeight: FontWeight.w600,
+                fontFamily: 'Nexa',
                 fontSize: 30,
               ),
             ),

@@ -36,7 +36,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.all(10),
       child: TextFormField(
         controller: widget.controller,
         keyboardType: widget.keyboardType,

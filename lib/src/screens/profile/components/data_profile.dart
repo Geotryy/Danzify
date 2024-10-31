@@ -30,7 +30,7 @@ class _DataprofileState extends State<DataProfile> {
             padding: EdgeInsets.all(15),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(15),
-                border: Border.all(color: Colors.yellow, width: 0.2)),
+                border: Border.all(color: Colors.white, width: 0.1)),
             child: Text(
               widget.data,
               style: TextStyle(color: Colors.white, fontSize: 15),
