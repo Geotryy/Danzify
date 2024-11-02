@@ -34,13 +34,13 @@ class HomeScreen extends StatelessWidget {
         child: ListView(
           children: [
             titleListView(context, 'Continue Assistindo'),
-            listCardHorizontal(),
-            titleListView(context, 'Mais Vistos'),
-            listCardHorizontal(),
-            titleListView(context, 'Adicionados Recentemente'),
-            listCardHorizontal(),
+      ListCardHorizontal(sectionTitle: 'Continue Assistindo'), // Chamando a função dos cards para a mesma seção
             titleListView(context, 'Melhores Avaliados'),
-            listCardHorizontal(),
+      ListCardHorizontal(sectionTitle: 'Melhores Avaliados'), // Chamando a função dos cards para a mesma seção
+            titleListView(context, 'Adicionados Recentemente'),
+      ListCardHorizontal(sectionTitle: 'Adicionadas Recentemente'), // Chamando a função dos cards para a mesma seção
+            titleListView(context, 'Mais Vistas'),
+      ListCardHorizontal(sectionTitle: 'Mais Vistas'), // Chamando a função dos cards para a mesma seção
           ],
         ),
       ),

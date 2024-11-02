@@ -20,51 +20,54 @@ class _BaseScreenState extends State<BaseScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: PageView(
-        controller: pageController,
-        physics: const NeverScrollableScrollPhysics(),
-        children:  const [
-          HomeScreen(),
-          SearchScreen(),
-          FavoriteScreen(),
-          PrincipalProfile()
-        ],
-      ),
-      bottomNavigationBar: Container(
-        decoration: const BoxDecoration(color: Color(0xFF0A0A0A)),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
-          child: GNav(
-              selectedIndex: currentindex,
-              gap: 8,
-              backgroundColor: const Color(0xFF0A0A0A),
-              color: Colors.white,
-              activeColor: Colors.white,
-              tabBackgroundColor: const Color(0xFFC11357),
-              padding: const EdgeInsets.all(16),
-              onTabChange: (index) {
-                currentindex = index;
-                pageController.jumpToPage(index);
-              },
-              tabs: const [
-                GButton(
-                  icon: CupertinoIcons.house_fill,
-                  text: 'Home',
-                ),
-                GButton(
-                  icon: CupertinoIcons.search,
-                  text: 'Pesquisar',
-                ),
-                GButton(
-                  icon: CupertinoIcons.heart_fill,
-                  text: 'Favoritos',
-                ),
-                GButton(
-                  icon: CupertinoIcons.person_fill,
-                  text: 'Perfil',
-                )
-              ]),
+    return PopScope(
+      canPop: true,
+      child: Scaffold(
+        body: PageView(
+          controller: pageController,
+          physics: const NeverScrollableScrollPhysics(),
+          children:  const [
+            HomeScreen(),
+            SearchScreen(),
+            FavoriteScreen(),
+            PrincipalProfile()
+          ],
+        ),
+        bottomNavigationBar: Container(
+          decoration: const BoxDecoration(color: Color(0xFF0A0A0A)),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+            child: GNav(
+                selectedIndex: currentindex,
+                gap: 8,
+                backgroundColor: const Color(0xFF0A0A0A),
+                color: Colors.white,
+                activeColor: Colors.white,
+                tabBackgroundColor: const Color(0xFFC11357),
+                padding: const EdgeInsets.all(16),
+                onTabChange: (index) {
+                  currentindex = index;
+                  pageController.jumpToPage(index);
+                },
+                tabs: const [
+                  GButton(
+                    icon: CupertinoIcons.house_fill,
+                    text: 'Home',
+                  ),
+                  GButton(
+                    icon: CupertinoIcons.search,
+                    text: 'Pesquisar',
+                  ),
+                  GButton(
+                    icon: CupertinoIcons.heart_fill,
+                    text: 'Favoritos',
+                  ),
+                  GButton(
+                    icon: CupertinoIcons.person_fill,
+                    text: 'Perfil',
+                  )
+                ]),
+          ),
         ),
       ),
     );

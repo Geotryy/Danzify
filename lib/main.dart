@@ -1,11 +1,14 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:quiz/firebase_options.dart';
+import 'package:quiz/src/screens/auth/sign_in.dart';
+import 'package:quiz/src/screens/base/base.dart';
 import 'package:quiz/src/screens/initial/initial_screen.dart';
 
 Future<void> main() async {
-  runApp(const MyApp());
+ 
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
@@ -14,6 +17,7 @@ Future<void> main() async {
     persistenceEnabled: true
   )
   ;
+ runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -33,7 +37,7 @@ class MyApp extends StatelessWidget {
           elevation: 0, // Sem sombra
         ),
       ),
-      home: const FirstScreen(),
+      home:FirebaseAuth.instance.currentUser == null ? SignIn() : BaseScreen(),
     );
   }
 }

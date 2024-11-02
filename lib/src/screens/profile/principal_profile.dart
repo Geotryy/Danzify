@@ -1,14 +1,17 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:quiz/src/components/colors/colors.dart';
-import 'package:quiz/src/screens/auth/sign_in.dart';
 import 'package:quiz/src/screens/initial/initial_screen.dart';
 import 'package:quiz/src/screens/profile/components/options_profile.dart';
+import 'package:quiz/src/screens/profile/components/show-dialog.dart';
 import 'package:quiz/src/screens/profile/options/profile_screen.dart';
 import 'package:quiz/src/screens/profile/options/security_screen.dart';
 import 'package:quiz/src/screens/profile/options/theme_screen.dart';
+import 'package:quiz/src/services/auth_service.dart';
 import 'package:quiz/src/services/database_service.dart';
 import 'package:flutter/cupertino.dart';
+
+
 
 class PrincipalProfile extends StatefulWidget {
   const PrincipalProfile({super.key});
@@ -24,7 +27,6 @@ class _PrincipalProfileState extends State<PrincipalProfile> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     _loadUserData();
   }
@@ -124,70 +126,61 @@ class _PrincipalProfileState extends State<PrincipalProfile> {
                 ),
               ),
             ),
-            Container(
-              padding: EdgeInsets.symmetric(vertical: 10),
-              height: MediaQuery.of(context).size.height * 0.5,
+            Expanded(
               child: ListView(
                 children: [
-// TELA DE DADOS PESSOAIS
+              // TELA DE DADOS PESSOAIS
                   OptionsProfile(
                       navigator: (context) {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => ProfileScreen(),
+                            builder: (context) => const ProfileScreen(),
                           ),
                         );
                       },
                       description: 'Dados Pessoais',
                       icon: CupertinoIcons.person),
-
-// TELA DE SEGURANCA
+              
+              // TELA DE SEGURANCA
                   OptionsProfile(
                       navigator: (context) {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => SecurityScreen(),
+                            builder: (context) => const SecurityScreen(),
                           ),
                         );
                       },
                       description: 'Segurança',
                       icon: CupertinoIcons.lock),
-// TELA DE APARENCIA
+              // TELA DE APARENCIA
                   OptionsProfile(
                       navigator: (context) {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => ThemeScreen(),
+                            builder: (context) => const ThemeScreen(),
                           ),
                         );
                       },
                       description: 'Aparência',
                       icon: CupertinoIcons.paintbrush),
-// TELA DE SAIR
+              // TELA DE SAIR
                   OptionsProfile(
                       navigator: (context) {
                         Navigator.pushAndRemoveUntil(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => FirstScreen(),
+                              builder: (context) => const FirstScreen(),
                             ),
                             (route) => false);
                       },
                       description: 'Sair',
                       icon: CupertinoIcons.square_arrow_right),
-// TELA DE APAGAR CONTA
+              // TELA DE APAGAR CONTA
                   OptionsProfile(
-                      navigator: (context) {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => FirstScreen(),
-                          ),
-                        );
-                      },
+                     navigator: _dialogBuilder,
                       description: 'Apagar a conta',
                       icon: CupertinoIcons.trash),
                 ],
@@ -197,5 +190,42 @@ class _PrincipalProfileState extends State<PrincipalProfile> {
         ),
       ),
     );
+    
   }
+ Future<void> _dialogBuilder(BuildContext context) {
+    return showDialog<void>(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text(
+                'Você tem certeza que quer excluir permanentemente a sua conta?'),
+            content: Text(
+                "Ao clicar em 'Deletar conta' você estará excluindo permanentemente a sua conta e não poderá recuperá-la, apenas criar uma nova."),
+            actions: <Widget>[
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                child: const Text('Cancelar'),
+              ),
+              ElevatedButton(
+                onPressed: () async {
+                  String userEmail = AuthService().getCurrentUser()?.email ?? "";
+                  await AuthService().deleteUser(userEmail);
+                  Navigator.pushAndRemoveUntil(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const FirstScreen()),
+                              (route) => false);
+                  
+                  
+
+                },
+                child: const Text('Deletar Conta'),
+              ),
+            ],
+          );
+        });
+  
+}
 }

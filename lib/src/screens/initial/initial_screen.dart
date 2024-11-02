@@ -16,7 +16,7 @@ class FirstScreen extends StatelessWidget {
           child: Container(
             decoration: const BoxDecoration(
               image: DecorationImage(
-                image: AssetImage('lib/assets/images/initial.jpg'),
+                image: AssetImage('lib/assets/images/initial.png'),
                 fit: BoxFit.cover,
               ),
             ),

@@ -42,16 +42,15 @@ class _SignInState extends State<SignIn> {
           // Formulário
           Align(
             alignment: Alignment.bottomCenter,
-            child: Container(
-              height: MediaQuery.of(context).size.height * 0.5,
-              padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 40),
-              decoration: const BoxDecoration(
-                borderRadius:
-                    BorderRadius.vertical(top: Radius.circular(45)),
-                color: Color.fromARGB(155, 14, 12, 12),
-              ),
-              child: SingleChildScrollView(
-                // Adicione este widget para evitar overflow
+            child: SingleChildScrollView(
+              child: Container(
+                height: MediaQuery.of(context).size.height * 0.5,
+                padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 40),
+                decoration: const BoxDecoration(
+                  borderRadius:
+                      BorderRadius.vertical(top: Radius.circular(45)),
+                  color: Color.fromARGB(155, 14, 12, 12),
+                ),
                 child: Column(
                   mainAxisSize: MainAxisSize
                       .min, // Use MainAxisSize.min para que a coluna não ocupe todo o espaço

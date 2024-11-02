@@ -73,7 +73,7 @@ String telefone = '';
         ),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(15.0),
+        padding: const EdgeInsets.symmetric(horizontal: 15),
         child: ListView(
           children: [
             const Center(
@@ -82,20 +82,8 @@ String telefone = '';
                 backgroundImage: AssetImage('lib/assets/images/profile.jfif'),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.only(top: 15, bottom: 20),
-              child: Center(
-                child: Text(
-                  // Exibe o nome do usuário, se disponível, ou um texto padrão
-                 nome,
-                  style: const TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20,
-                  ),
-                ),
-              ),
-            ),
+          SizedBox(height: 30,),
+          DataProfile(label: 'Nome', data: nome),
             // Exibe o e-mail do usuário autenticado
           DataProfile(label: 'E-mail', data: email),
           
