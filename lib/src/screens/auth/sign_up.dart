@@ -93,7 +93,7 @@ class _SignUpState extends State<SignUp> {
                     const SizedBox(height: 50),
                     CustomButton(
                       navigator: (context) {
-                        Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => BaseScreen()), (route) => false);
+                        Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => const BaseScreen()), (route) => false);
                       },
                       width: 200,
                       color: const Color(0xFFC11357),

@@ -9,7 +9,7 @@ class Todo {
     required this.nome,
   });
 
-  Todo.FromJson(Map<String, Object?> json)
+  Todo.fromJson(Map<String, Object?> json)
       : this(
           telefone: json['telefone']! as int,
           nome: json['nome']! as String,

@@ -3,15 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:quiz/src/components/colors/colors.dart';
 import 'package:quiz/src/screens/initial/initial_screen.dart';
 import 'package:quiz/src/screens/profile/components/options_profile.dart';
-import 'package:quiz/src/screens/profile/components/show-dialog.dart';
 import 'package:quiz/src/screens/profile/options/profile_screen.dart';
 import 'package:quiz/src/screens/profile/options/security_screen.dart';
 import 'package:quiz/src/screens/profile/options/theme_screen.dart';
 import 'package:quiz/src/services/auth_service.dart';
 import 'package:quiz/src/services/database_service.dart';
 import 'package:flutter/cupertino.dart';
-
-
 
 class PrincipalProfile extends StatefulWidget {
   const PrincipalProfile({super.key});
@@ -88,29 +85,30 @@ class _PrincipalProfileState extends State<PrincipalProfile> {
         padding: const EdgeInsets.all(15.0),
         child: Column(
           children: [
-           Stack(
-            children: [
-             const Center(
-                child: CircleAvatar(
-                  radius: 50,
-                  backgroundImage: AssetImage('lib/assets/images/profile.jfif'),
-                ),
-              ),
-              Positioned(
-                bottom: 0,
-                right: MediaQuery.of(context).size.width * 0.35,
-                child: const CircleAvatar(
-                  radius: 15,
-                  backgroundColor: Color(0xFFC11357),
-                  child: Icon(
-                    Icons.edit,
-                    color: Colors.white,
-                    size: 15,
+            Stack(
+              children: [
+                const Center(
+                  child: CircleAvatar(
+                    radius: 50,
+                    backgroundImage:
+                        AssetImage('lib/assets/images/profile.jfif'),
                   ),
                 ),
-              ),
-            ],
-          ),
+                Positioned(
+                  bottom: 0,
+                  right: MediaQuery.of(context).size.width * 0.35,
+                  child: const CircleAvatar(
+                    radius: 15,
+                    backgroundColor: Color(0xFFC11357),
+                    child: Icon(
+                      Icons.edit,
+                      color: Colors.white,
+                      size: 15,
+                    ),
+                  ),
+                ),
+              ],
+            ),
             Padding(
               padding: const EdgeInsets.only(top: 15, bottom: 20),
               child: Center(
@@ -129,7 +127,7 @@ class _PrincipalProfileState extends State<PrincipalProfile> {
             Expanded(
               child: ListView(
                 children: [
-              // TELA DE DADOS PESSOAIS
+                  // TELA DE DADOS PESSOAIS
                   OptionsProfile(
                       navigator: (context) {
                         Navigator.push(
@@ -141,8 +139,8 @@ class _PrincipalProfileState extends State<PrincipalProfile> {
                       },
                       description: 'Dados Pessoais',
                       icon: CupertinoIcons.person),
-              
-              // TELA DE SEGURANCA
+
+                  // TELA DE SEGURANCA
                   OptionsProfile(
                       navigator: (context) {
                         Navigator.push(
@@ -154,7 +152,7 @@ class _PrincipalProfileState extends State<PrincipalProfile> {
                       },
                       description: 'Segurança',
                       icon: CupertinoIcons.lock),
-              // TELA DE APARENCIA
+                  // TELA DE APARENCIA
                   OptionsProfile(
                       navigator: (context) {
                         Navigator.push(
@@ -166,21 +164,14 @@ class _PrincipalProfileState extends State<PrincipalProfile> {
                       },
                       description: 'Aparência',
                       icon: CupertinoIcons.paintbrush),
-              // TELA DE SAIR
+                  // TELA DE SAIR
                   OptionsProfile(
-                      navigator: (context) {
-                        Navigator.pushAndRemoveUntil(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const FirstScreen(),
-                            ),
-                            (route) => false);
-                      },
+                      navigator: _dialogBuilderQuit,
                       description: 'Sair',
                       icon: CupertinoIcons.square_arrow_right),
-              // TELA DE APAGAR CONTA
+                  // TELA DE APAGAR CONTA
                   OptionsProfile(
-                     navigator: _dialogBuilder,
+                      navigator: _dialogBuilder,
                       description: 'Apagar a conta',
                       icon: CupertinoIcons.trash),
                 ],
@@ -190,42 +181,95 @@ class _PrincipalProfileState extends State<PrincipalProfile> {
         ),
       ),
     );
-    
   }
- Future<void> _dialogBuilder(BuildContext context) {
+
+  Future<void> _dialogBuilder(BuildContext context) {
     return showDialog<void>(
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-            title: Text(
+            title: const Text(
                 'Você tem certeza que quer excluir permanentemente a sua conta?'),
-            content: Text(
+            content: const Text(
                 "Ao clicar em 'Deletar conta' você estará excluindo permanentemente a sua conta e não poderá recuperá-la, apenas criar uma nova."),
             actions: <Widget>[
               ElevatedButton(
                 onPressed: () {
                   Navigator.of(context).pop();
                 },
-                child: const Text('Cancelar'),
+                style: ElevatedButton.styleFrom(backgroundColor: Colors.grey),
+                child: const Text(
+                  'Cancelar',
+                  style: TextStyle(color: Colors.white),
+                ),
               ),
               ElevatedButton(
                 onPressed: () async {
-                  String userEmail = AuthService().getCurrentUser()?.email ?? "";
+                  String userEmail =
+                      AuthService().getCurrentUser()?.email ?? "";
                   await AuthService().deleteUser(userEmail);
                   Navigator.pushAndRemoveUntil(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const FirstScreen()),
-                              (route) => false);
-                  
-                  
-
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const FirstScreen()),
+                      (route) => false);
                 },
-                child: const Text('Deletar Conta'),
+                style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
+                child: const Text(
+                  'Deletar Conta',
+                  style: TextStyle(color: Colors.white),
+                ),
               ),
             ],
           );
         });
-  
-}
+  }
+
+  Future<void> _dialogBuilderQuit(BuildContext context) {
+    return showDialog<void>(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: const Center(
+              child: Text('Tem certeza que quer sair da conta?'),
+            ),
+            actions: <Widget>[
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                    style:
+                        ElevatedButton.styleFrom(backgroundColor: Colors.grey),
+                    child: const Text(
+                      'Cancelar',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  ),
+                  const SizedBox(
+                    width: 10,
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.pushAndRemoveUntil(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const FirstScreen()),
+                          (route) => false);
+                    },
+                    style:
+                        ElevatedButton.styleFrom(backgroundColor: Colors.red),
+                    child: const Text(
+                      'Sair',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  ),
+                ],
+              )
+            ],
+          );
+        });
+  }
 }

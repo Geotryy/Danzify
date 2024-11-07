@@ -8,9 +8,9 @@ class Utils {
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-            title: Text(
+            title: const Text(
                 'Você tem certeza que quer excluir permanentemente a sua conta?'),
-            content: Text(
+            content: const Text(
                 "Ao clicar em 'Deletar conta' você estará excluindo permanentemente a sua conta e não poderá recuperá-la, apenas criar uma nova."),
             actions: <Widget>[
               ElevatedButton(

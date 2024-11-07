@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quiz/src/components/colors/colors.dart';
 import 'package:quiz/src/components/custom/button.dart';
 import 'package:quiz/src/screens/auth/sign_in.dart';
 import 'package:quiz/src/screens/auth/sign_up.dart';
@@ -23,7 +24,7 @@ class FirstScreen extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center, // Centraliza na tela
               children: [
-                Spacer(flex:3),
+               const Spacer(flex:3),
                 CustomButton(
                   width: 170,
                  navigator: (context) {
@@ -31,19 +32,19 @@ class FirstScreen extends StatelessWidget {
                       },
                   color: Colors.white,
                   text: 'Inscrever-se',
-                  textButtonColor: Color(0xFFC11357),
+                  textButtonColor: CustomColors.customSwatchColor,
                 ),
-                SizedBox(height: 15),
+                const SizedBox(height: 15),
                 CustomButton(
                   width: 170,
                    navigator: (context) {
                         Navigator.push(context, MaterialPageRoute(builder: (context) => SignIn()));
                       },
-                  color: Color(0xFFC11357),
+                  color: CustomColors.customContrastColor,
                   text: 'Entrar',
                   textButtonColor: Colors.white,
                 ),
-                Spacer(flex: 1,),
+               const Spacer(flex: 1,),
               ],
             ),
           ),

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 class DataProfile extends StatefulWidget {
-  String label;
-  String data;
-  DataProfile({super.key, required this.label, required this.data});
+  final String label;
+  final String data;
+  const DataProfile({super.key, required this.label, required this.data});
 
   @override
   State<DataProfile> createState() => _DataprofileState();
@@ -27,16 +27,16 @@ class _DataprofileState extends State<DataProfile> {
             height: 8,
           ),
           Container(
-            padding: EdgeInsets.all(15),
+            padding: const EdgeInsets.all(15),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(15),
                 border: Border.all(color: Colors.white, width: 0.1)),
             child: Text(
               widget.data,
-              style: TextStyle(color: Colors.white, fontSize: 15),
+              style: const TextStyle(color: Colors.white, fontSize: 15),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 25,
           ),
         ]);

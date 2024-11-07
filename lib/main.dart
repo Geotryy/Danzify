@@ -3,7 +3,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:quiz/firebase_options.dart';
-import 'package:quiz/src/screens/auth/sign_in.dart';
 import 'package:quiz/src/screens/base/base.dart';
 import 'package:quiz/src/screens/initial/initial_screen.dart';
 
@@ -37,7 +36,7 @@ class MyApp extends StatelessWidget {
           elevation: 0, // Sem sombra
         ),
       ),
-      home:FirebaseAuth.instance.currentUser == null ? SignIn() : BaseScreen(),
+      home:FirebaseAuth.instance.currentUser == null ? const FirstScreen() : const BaseScreen(),
     );
   }
 }

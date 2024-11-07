@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:quiz/src/screens/auth/components/auth/custom_text.dart';
@@ -45,10 +47,10 @@ class _SignInState extends State<SignIn> {
             child: SingleChildScrollView(
               child: Container(
                 height: MediaQuery.of(context).size.height * 0.5,
-                padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 40),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 32, vertical: 40),
                 decoration: const BoxDecoration(
-                  borderRadius:
-                      BorderRadius.vertical(top: Radius.circular(45)),
+                  borderRadius: BorderRadius.vertical(top: Radius.circular(45)),
                   color: Color.fromARGB(155, 14, 12, 12),
                 ),
                 child: Column(
@@ -60,7 +62,7 @@ class _SignInState extends State<SignIn> {
                       label: 'E-mail',
                       controller: txtEmail,
                     ),
-                  
+
                     CustomTextField(
                       icon: Icons.lock,
                       label: 'Senha',
@@ -73,7 +75,10 @@ class _SignInState extends State<SignIn> {
                         onPressed: () {},
                         child: const Text(
                           'Esqueceu a senha?',
-                          style: TextStyle(color: Colors.white, fontSize: 15,),
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 15,
+                          ),
                         ),
                       ),
                     ),
@@ -114,8 +119,18 @@ class _SignInState extends State<SignIn> {
     User? user = await _auth.signInWithEmailAndPassword(email, senha);
 
     if (user != null) {
+      ScaffoldMessenger.of(context).showSnackBar(
+       const SnackBar(
+          content: Center(
+            child: Text('Usuário autenticado'),
+          ),
+          backgroundColor: Colors.green,
+          duration: Duration(seconds: 1),
+        ),
+      );
+      
       Navigator.push(
-          context, (MaterialPageRoute(builder: (context) => BaseScreen())));
+          context, (MaterialPageRoute(builder: (context) => const BaseScreen())));
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(

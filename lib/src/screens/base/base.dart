@@ -4,7 +4,6 @@ import 'package:quiz/src/screens/favorite/favorite_screen.dart';
 import 'package:quiz/src/screens/home/home_screen.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:quiz/src/screens/profile/principal_profile.dart';
-import 'package:quiz/src/screens/profile/options/profile_screen.dart';
 import 'package:quiz/src/screens/search/search.dart';
 
 class BaseScreen extends StatefulWidget {
